@@ -199,6 +199,7 @@ int main() {
         }
 
         print_stats_maybe();
+        activity_relay1_off_maybe();
 
         activity_led_off_maybe();
     }
