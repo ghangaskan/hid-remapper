@@ -167,6 +167,7 @@ int main() {
         read_report(&new_report, &tick);
         if (new_report) {
             activity_led_on();
+            activity_relay2_on();
         }
         if (their_descriptor_updated) {
             update_their_descriptor_derivates();
