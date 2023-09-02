@@ -15,7 +15,7 @@ void activity_led_on() {
 
 void activity_relay2_on() {
     led_state = true;
-    digitalWrite(GPIO_PIN_Relay2, HIGH);
+    gpio_put(GPIO_PIN_Relay2, true);
 }
 
 void activity_led_off_maybe() {
@@ -23,5 +23,5 @@ void activity_led_off_maybe() {
         led_state = false;
         board_led_write(false);
     }
-    digitalWrite(GPIO_PIN_Relay2, LOW);
+    gpio_put(GPIO_PIN_Relay2, false);
 }

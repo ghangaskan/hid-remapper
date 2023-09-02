@@ -65,8 +65,9 @@ void gpio_pins_init() {
         gpio_init(i);
         gpio_pull_up(i);
     }
-    pinMode(GPIO_PIN_Relay2, OUTPUT);      // Configure the onboard relay
-    digitalWrite(GPIO_PIN_Relay2, LOW);    // 
+    gpio_init(GPIO_PIN_Relay2);
+    gpio_set_dir(GPIO_PIN_Relay2, GPIO_OUT);      // Configure the onboard relay
+    gpio_pull_down(GPIO_PIN_Relay2);    // 
 }
 
 bool read_gpio(uint64_t now) {
