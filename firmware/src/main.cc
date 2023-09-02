@@ -26,10 +26,10 @@
 #define CONFIG_OFFSET_IN_FLASH (PICO_FLASH_SIZE_BYTES - PERSISTED_CONFIG_SIZE)
 #define FLASH_CONFIG_IN_MEMORY (((uint8_t*) XIP_BASE) + CONFIG_OFFSET_IN_FLASH)
 
-#define GPIO_PIN_Relay1 24
-#define GPIO_PIN_Relay2 25
+
 #define GPIO_PIN_FIRST 2
 #define GPIO_PIN_LAST 9
+#define GPIO_PIN_Relay1 10
 #define GPIO_PIN_MASK ((1 << (GPIO_PIN_LAST + 1)) - (1 << GPIO_PIN_FIRST))
 
 #define GPIO_USAGE_PAGE 0xFFF40000
@@ -65,9 +65,9 @@ void gpio_pins_init() {
         gpio_init(i);
         gpio_pull_up(i);
     }
-    gpio_init(GPIO_PIN_Relay2);
-    gpio_set_dir(GPIO_PIN_Relay2, GPIO_OUT);      // Configure the onboard relay
-    gpio_pull_down(GPIO_PIN_Relay2);    // 
+    gpio_init(GPIO_PIN_Relay1);
+    gpio_set_dir(GPIO_PIN_Relay1, GPIO_OUT);      // Configure the onboard relay
+    gpio_pull_down(GPIO_PIN_Relay1);    // 
 }
 
 bool read_gpio(uint64_t now) {
@@ -168,7 +168,7 @@ int main() {
         read_report(&new_report, &tick);
         if (new_report) {
             activity_led_on();
-            activity_relay2_on();
+            activity_relay1_on();
         }
         if (their_descriptor_updated) {
             update_their_descriptor_derivates();

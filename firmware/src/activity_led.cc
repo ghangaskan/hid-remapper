@@ -13,9 +13,8 @@ void activity_led_on() {
     turn_led_off_after = time_us_64() + 50000;
 }
 
-void activity_relay2_on() {
-    led_state = true;
-    gpio_put(GPIO_PIN_Relay2, true);
+void activity_relay1_on() {
+    gpio_put(GPIO_PIN_Relay1, true);
 }
 
 void activity_led_off_maybe() {
@@ -23,5 +22,5 @@ void activity_led_off_maybe() {
         led_state = false;
         board_led_write(false);
     }
-    gpio_put(GPIO_PIN_Relay2, false);
+    gpio_put(GPIO_PIN_Relay1, false);
 }
