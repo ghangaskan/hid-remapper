@@ -24,6 +24,7 @@ void activity_led_off_maybe() {
     if (led_state && (time_us_64() > turn_led_off_after)) {
         led_state = false;
         board_led_write(false);
+        gpio_put(GPIO_PIN_Relay1, false);
     }
-    gpio_put(GPIO_PIN_Relay1, false);
+
 }
