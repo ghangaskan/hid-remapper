@@ -13,9 +13,15 @@ void activity_led_on() {
     turn_led_off_after = time_us_64() + 50000;
 }
 
+void activity_relay1_on() {
+    led_state = true;
+    digitalWrite(GPIO_PIN_Relay2, HIGH);
+}
+
 void activity_led_off_maybe() {
     if (led_state && (time_us_64() > turn_led_off_after)) {
         led_state = false;
         board_led_write(false);
     }
+    digitalWrite(GPIO_PIN_Relay2, LOW);
 }

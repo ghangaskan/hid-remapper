@@ -26,6 +26,8 @@
 #define CONFIG_OFFSET_IN_FLASH (PICO_FLASH_SIZE_BYTES - PERSISTED_CONFIG_SIZE)
 #define FLASH_CONFIG_IN_MEMORY (((uint8_t*) XIP_BASE) + CONFIG_OFFSET_IN_FLASH)
 
+#define GPIO_PIN_Relay1 24
+#define GPIO_PIN_Relay2 25
 #define GPIO_PIN_FIRST 2
 #define GPIO_PIN_LAST 9
 #define GPIO_PIN_MASK ((1 << (GPIO_PIN_LAST + 1)) - (1 << GPIO_PIN_FIRST))
@@ -63,6 +65,8 @@ void gpio_pins_init() {
         gpio_init(i);
         gpio_pull_up(i);
     }
+    pinMode(arduinoLED, OUTPUT);      // Configure the onboard LED for output
+    digitalWrite(arduinoLED, LOW);    // 
 }
 
 bool read_gpio(uint64_t now) {
