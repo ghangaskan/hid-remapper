@@ -21,7 +21,7 @@ void activity_led_on() {
 void activity_relay1_on() {
     relay_state = true;
     gpio_put(GPIO_PIN_Relay1, true);
-    turn_relay_off_after = time_us_64() + 10000;
+    turn_relay_off_after = time_us_64() + 5000;
 }
 
 void activity_led_off_maybe() {
