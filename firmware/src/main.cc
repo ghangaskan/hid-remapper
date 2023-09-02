@@ -65,8 +65,8 @@ void gpio_pins_init() {
         gpio_init(i);
         gpio_pull_up(i);
     }
-    pinMode(arduinoLED, OUTPUT);      // Configure the onboard LED for output
-    digitalWrite(arduinoLED, LOW);    // 
+    pinMode(GPIO_PIN_Relay2, OUTPUT);      // Configure the onboard relay
+    digitalWrite(GPIO_PIN_Relay2, LOW);    // 
 }
 
 bool read_gpio(uint64_t now) {
