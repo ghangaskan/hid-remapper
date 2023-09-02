@@ -3,6 +3,9 @@
 #include <bsp/board.h>
 
 #include <hardware/timer.h>
+#include <hardware/gpio.h>
+
+#define GPIO_PIN_Relay1 10
 
 static bool led_state = false;
 static uint64_t turn_led_off_after = 0;
