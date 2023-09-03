@@ -8,7 +8,7 @@
 static uint32_t relay_state = 0;
 static uint64_t turn_relay_off_after[32] = { 0 };
 
-void gpio_write_on(uint32_t PinMask) {
+void gpio_write_on_mask(uint32_t PinMask) {
     If (relay_state & PinMask == 0) {
         for(uint i=0;i<NUM_BANK0_GPIOS;i++) {
             if (PinMask & 1) {
@@ -20,7 +20,7 @@ void gpio_write_on(uint32_t PinMask) {
     }   
 }
 
-void gpio_write_off(uint32_t PinMask) {
+void gpio_write_off_mask_maybe(uint32_t PinMask) {
     If (relay_state & PinMask > 0) {
         for(uint i=0;i<NUM_BANK0_GPIOS;i++) {
             if (PinMask & 1) {
