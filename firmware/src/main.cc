@@ -29,8 +29,9 @@
 
 #define GPIO_PIN_FIRST 2
 #define GPIO_PIN_LAST 9
-#define GPIO_PIN_Relay1 10
-#define GPIO_PIN_MASK ((1 << (GPIO_PIN_LAST + 1)) - (1 << GPIO_PIN_FIRST))
+#define GPIO_PIN_OUT_MASK 16
+#define GPIO_PIN_MASK ((1 << (GPIO_PIN_LAST + 1)) - (1 << GPIO_PIN_FIRST) - GPIO_PIN_OUT_MASK)
+
 
 #define GPIO_USAGE_PAGE 0xFFF40000
 
@@ -58,16 +59,6 @@ void sof_handler(uint32_t frame_count) {
 bool do_send_report(uint8_t interface, const uint8_t* report_with_id, uint8_t len) {
     tud_hid_n_report(interface, report_with_id[0], report_with_id + 1, len - 1);
     return true;  // XXX?
-}
-
-void gpio_pins_init() {
-    for (uint8_t i = GPIO_PIN_FIRST; i <= GPIO_PIN_LAST; i++) {
-        gpio_init(i);
-        gpio_pull_up(i);
-    }
-    gpio_init(GPIO_PIN_Relay1);
-    gpio_set_dir(GPIO_PIN_Relay1, GPIO_OUT);      // Configure the onboard relay
-    gpio_pull_down(GPIO_PIN_Relay1);    // 
 }
 
 bool read_gpio(uint64_t now) {
@@ -148,7 +139,9 @@ uint64_t get_unique_id() {
 
 int main() {
     my_mutexes_init();
-    gpio_pins_init();
+    //gpio_pins_init();
+    gpio_init_read_mask(GPIO_PIN_MASK);
+    gpio_init_write_mask(GPIO_PIN_OUT_MASK);
     tick_init();
     parse_our_descriptor();
     load_config(FLASH_CONFIG_IN_MEMORY);
@@ -168,7 +161,7 @@ int main() {
         read_report(&new_report, &tick);
         if (new_report) {
             activity_led_on();
-            activity_relay1_on();
+            gpio_init_write_mask(16);
         }
         if (their_descriptor_updated) {
             update_their_descriptor_derivates();
@@ -199,7 +192,9 @@ int main() {
         }
 
         print_stats_maybe();
-        activity_relay1_off_maybe();
+        If () {}
+            gpio_write_off_maybe();
+        }
 
         activity_led_off_maybe();
     }
