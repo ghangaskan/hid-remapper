@@ -84,7 +84,6 @@ add_executable(remapper_dual_a
     src/serial.cc
     src/tick.cc
     src/activity_led.cc
-    src/gpio_write.cc
     src/pico_debug/swd.c
     src/pico_debug/flash.c
     src/pico_debug/adi.c
@@ -113,7 +112,6 @@ add_executable(remapper_dual_b
     src/serial.cc
     src/out_report.cc
     src/activity_led.cc
-    src/gpio_write.cc
 )
 target_include_directories(remapper_dual_b PRIVATE
     src
@@ -147,7 +145,6 @@ add_executable(remapper_serial
     src/interval_override.cc
     src/tick.cc
     src/activity_led.cc
-    src/gpio_write.cc
 )
 target_include_directories(remapper_serial PRIVATE
     src
