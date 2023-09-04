@@ -194,7 +194,7 @@ int main() {
 
         print_stats_maybe();
         if (GPIO_PIN_OUT_MASK > 0) {
-            gpio_write_off_maybe(GPIO_PIN_OUT_MASK);
+            gpio_write_off_mask_maybe(GPIO_PIN_OUT_MASK);
         }
 
         activity_led_off_maybe();
