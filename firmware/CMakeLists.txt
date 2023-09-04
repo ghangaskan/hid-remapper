@@ -84,6 +84,7 @@ add_executable(remapper_dual_a
     src/serial.cc
     src/tick.cc
     src/activity_led.cc
+    src/gpio_write.cc
     src/pico_debug/swd.c
     src/pico_debug/flash.c
     src/pico_debug/adi.c
