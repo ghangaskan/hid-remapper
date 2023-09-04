@@ -146,6 +146,7 @@ add_executable(remapper_serial
     src/interval_override.cc
     src/tick.cc
     src/activity_led.cc
+    src/gpio_write.cc
 )
 target_include_directories(remapper_serial PRIVATE
     src
