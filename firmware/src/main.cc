@@ -14,6 +14,7 @@
 #include <pico/unique_id.h>
 
 #include "activity_led.h"
+#include "gpio_write.h"
 #include "config.h"
 #include "crc.h"
 #include "descriptor_parser.h"
@@ -192,8 +193,8 @@ int main() {
         }
 
         print_stats_maybe();
-        If () {}
-            gpio_write_off_maybe();
+        if (GPIO_PIN_OUT_MASK > 0) {
+            gpio_write_off_maybe(GPIO_PIN_OUT_MASK);
         }
 
         activity_led_off_maybe();
