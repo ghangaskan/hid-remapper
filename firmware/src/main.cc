@@ -30,7 +30,7 @@
 
 #define GPIO_PIN_FIRST 2
 #define GPIO_PIN_LAST 9
-#define GPIO_PIN_OUT_MASK (1 << 6)
+#define GPIO_PIN_OUT_MASK (1 << 5)
 #define GPIO_PIN_MASK (((1 << (GPIO_PIN_LAST + 1)) - (1 << GPIO_PIN_FIRST)) - GPIO_PIN_OUT_MASK)
 
 
